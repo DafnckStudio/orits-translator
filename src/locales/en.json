@@ -1,0 +1,83 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "refresh": "Refresh",
+    "retry": "Retry",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "translation": {
+    "title": "Translation Service",
+    "description": "Professional translation service powered by AI",
+    "translate": "Translate",
+    "sourceLanguage": "Source Language",
+    "targetLanguage": "Target Language",
+    "autoDetect": "Auto-detect",
+    "enterText": "Enter text to translate",
+    "translatedText": "Translated text",
+    "copy": "Copy",
+    "clear": "Clear",
+    "history": "Translation History",
+    "favorites": "Favorites",
+    "apiKey": "API Key",
+    "apiDocumentation": "API Documentation",
+    "rateLimit": "Rate Limit",
+    "charactersUsed": "Characters Used",
+    "charactersRemaining": "Characters Remaining"
+  },
+  "languages": {
+    "selectLanguage": "Select Language",
+    "currentLanguage": "Current Language",
+    "changeLanguage": "Change Language"
+  },
+  "api": {
+    "title": "API Documentation",
+    "description": "Integrate our translation service into your application",
+    "endpoint": "API Endpoint",
+    "authentication": "Authentication",
+    "examples": "Examples",
+    "response": "Response",
+    "errorCodes": "Error Codes",
+    "rateLimits": "Rate Limits"
+  },
+  "errors": {
+    "invalidApiKey": "Invalid API key",
+    "rateLimitExceeded": "Rate limit exceeded",
+    "translationFailed": "Translation failed",
+    "networkError": "Network error",
+    "serverError": "Server error",
+    "invalidRequest": "Invalid request",
+    "textTooLong": "Text too long",
+    "unsupportedLanguage": "Unsupported language"
+  },
+  "seo": {
+    "title": "Professional Translation Service | Translate Open",
+    "description": "High-quality translation service powered by AI. Translate text between multiple languages with our easy-to-use API.",
+    "keywords": "translation, AI, language, API, multilingual, translate"
+  }
+}
+

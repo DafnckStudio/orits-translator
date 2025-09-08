@@ -1,0 +1,278 @@
+/* ========================================
+   PROTECTION CONTRE LA TRADUCTION AUTOMATIQUE
+   ======================================== */
+
+/* Classes de base pour bloquer la traduction */
+.notranslate,
+.translate-protected {
+  /* Attribut HTML standard pour bloquer la traduction */
+  translate: no !important;
+  
+  /* Empêcher la sélection pour la traduction automatique */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  /* Indicateur visuel subtil en mode développement */
+  position: relative;
+}
+
+/* Indicateur visuel en mode développement */
+.translate-protected::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px dashed rgba(255, 0, 0, 0.3);
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Afficher l'indicateur au hover en mode développement */
+.translate-protected:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   PROTECTION DES DONNÉES UTILISATEUR
+   ======================================== */
+
+.user-data-protected {
+  /* Style spécifique pour les données utilisateur */
+  background-color: rgba(255, 193, 7, 0.1);
+  border-radius: 3px;
+  padding: 1px 3px;
+  font-weight: 500;
+}
+
+.user-data-email {
+  /* Style pour les emails */
+  color: #0066cc;
+  font-family: 'Courier New', monospace;
+}
+
+.user-data-name {
+  /* Style pour les noms */
+  color: #333;
+  font-weight: 600;
+}
+
+.user-data-phone {
+  /* Style pour les numéros de téléphone */
+  color: #28a745;
+  font-family: 'Courier New', monospace;
+}
+
+.user-data-address {
+  /* Style pour les adresses */
+  color: #6c757d;
+  font-style: italic;
+}
+
+.user-data-id {
+  /* Style pour les IDs */
+  color: #6f42c1;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+/* ========================================
+   PROTECTION DES NOMS DE MARQUE
+   ======================================== */
+
+.brand-protected {
+  /* Style pour les noms de marque */
+  color: #dc3545;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========================================
+   PROTECTION DES CODES TECHNIQUES
+   ======================================== */
+
+.code-protected {
+  /* Style pour les codes techniques */
+  background-color: rgba(108, 117, 125, 0.1);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: #495057;
+}
+
+.code-id {
+  /* Style pour les IDs */
+  color: #6f42c1;
+}
+
+.code-token {
+  /* Style pour les tokens */
+  color: #fd7e14;
+}
+
+.code-hash {
+  /* Style pour les hashes */
+  color: #20c997;
+}
+
+.code-url {
+  /* Style pour les URLs */
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.code-email {
+  /* Style pour les emails techniques */
+  color: #dc3545;
+}
+
+/* ========================================
+   INDICATEURS VISUELS POUR LES DÉVELOPPEURS
+   ======================================== */
+
+/* Mode développement - afficher les indicateurs */
+body[data-env="development"] .translate-protected::after {
+  content: attr(data-translate-reason);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+body[data-env="development"] .translate-protected:hover::after {
+  opacity: 1;
+}
+
+/* ========================================
+   RESPONSIVE ET ACCESSIBILITÉ
+   ======================================== */
+
+/* Sur mobile, réduire les indicateurs visuels */
+@media (max-width: 768px) {
+  .translate-protected::before {
+    border-width: 1px;
+  }
+  
+  body[data-env="development"] .translate-protected::after {
+    font-size: 9px;
+    padding: 1px 4px;
+  }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  .user-data-protected {
+    background-color: rgba(255, 193, 7, 0.2);
+  }
+  
+  .code-protected {
+    background-color: rgba(108, 117, 125, 0.2);
+  }
+  
+  .user-data-name {
+    color: #e9ecef;
+  }
+  
+  .user-data-email {
+    color: #4dabf7;
+  }
+  
+  .user-data-phone {
+    color: #51cf66;
+  }
+  
+  .user-data-address {
+    color: #adb5bd;
+  }
+  
+  .user-data-id {
+    color: #9775fa;
+  }
+  
+  .brand-protected {
+    color: #ff6b6b;
+  }
+  
+  .code-id {
+    color: #9775fa;
+  }
+  
+  .code-token {
+    color: #ffa94d;
+  }
+  
+  .code-hash {
+    color: #51cf66;
+  }
+  
+  .code-url {
+    color: #4dabf7;
+  }
+  
+  .code-email {
+    color: #ff6b6b;
+  }
+}
+
+/* ========================================
+   UTILITAIRES
+   ======================================== */
+
+/* Classe pour masquer complètement la traduction */
+.no-translate-completely {
+  translate: no !important;
+  -webkit-translate: no !important;
+  -moz-translate: no !important;
+  -ms-translate: no !important;
+}
+
+/* Classe pour les éléments qui ne doivent jamais être traduits */
+.never-translate {
+  translate: no !important;
+  -webkit-translate: no !important;
+  -moz-translate: no !important;
+  -ms-translate: no !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* Classe pour les éléments de navigation */
+.nav-no-translate {
+  translate: no !important;
+}
+
+/* Classe pour les boutons d'action */
+.action-no-translate {
+  translate: no !important;
+}
+
+/* Classe pour les formulaires */
+.form-no-translate {
+  translate: no !important;
+}
+
+/* Classe pour les métadonnées */
+.meta-no-translate {
+  translate: no !important;
+  color: #6c757d;
+  font-size: 0.8em;
+}
+

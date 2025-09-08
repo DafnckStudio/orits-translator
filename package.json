@@ -1,0 +1,56 @@
+{
+  "name": "translate-open",
+  "version": "1.0.0",
+  "description": "Système de traduction automatique avec API hébergée",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "translate": "tsx scripts/translate-locales.ts",
+    "translate:all": "tsx scripts/translate-all-locales.ts",
+    "validate-locales": "tsx scripts/validate-locales.ts",
+    "check-translation-protection": "node scripts/check-translation-protection.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:setup": "tsx scripts/setup-db.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/pg": "^8.10.0",
+    "bcryptjs": "^2.4.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "drizzle-orm": "^0.36.0",
+    "lucide-react": "^0.294.0",
+    "next": "^14.0.0",
+    "next-intl": "^3.0.0",
+    "openai": "^4.20.0",
+    "postgres": "^3.4.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "tailwind-merge": "^2.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.0",
+    "drizzle-kit": "^0.31.4",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.3.0",
+    "tsx": "^4.6.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
