@@ -13,7 +13,7 @@ Guide complet pour utiliser l'API de traduction Translate Open.
 **Pour utiliser l'API :**
 1. L'API est disponible à l'adresse : `https://orits-translator.up.railway.app`
 2. Testez l'API directement avec les endpoints ci-dessous
-3. Aucune clé API requise pour la version de démonstration
+3. **Aucune clé API requise** - L'API est ouverte et gratuite
 
 ### 2. Test de Connexion
 
@@ -35,7 +35,7 @@ curl -X GET https://orits-translator.up.railway.app/api/health
 
 ## 🔑 Authentification
 
-**Version de démonstration :** Aucune clé API requise pour tester l'API.
+**✅ API Ouverte :** Aucune clé API requise - L'API est gratuite et ouverte à tous.
 
 ### Headers Requis
 
@@ -43,15 +43,9 @@ curl -X GET https://orits-translator.up.railway.app/api/health
 Content-Type: application/json
 ```
 
-### Clé API
+### ⚠️ Note Importante
 
-Incluez votre clé API dans le body de la requête :
-
-```json
-{
-  "apiKey": "your-api-key-here"
-}
-```
+L'API ne nécessite **aucune authentification**. Vous pouvez l'utiliser directement sans clé API.
 
 ## 🌍 Endpoint de Traduction
 
@@ -67,9 +61,7 @@ Content-Type: application/json
 
 {
   "text": "Hello, world!",
-  "sourceLanguage": "en",
-  "targetLanguage": "fr",
-  "apiKey": "your-api-key-here"
+  "targetLanguage": "fr"
 }
 ```
 
@@ -78,9 +70,7 @@ Content-Type: application/json
 | Paramètre | Type | Requis | Description |
 |-----------|------|--------|-------------|
 | `text` | string | ✅ | Texte à traduire (max 10,000 caractères) |
-| `sourceLanguage` | string | ❌ | Langue source (auto-détection si omis) |
 | `targetLanguage` | string | ✅ | Langue cible |
-| `apiKey` | string | ✅ | Votre clé API |
 
 #### Langues Supportées
 
@@ -208,7 +198,7 @@ const unprotectedData = {
 ### JavaScript/Node.js
 
 ```javascript
-const translateText = async (text, targetLanguage, apiKey) => {
+const translateText = async (text, targetLanguage) => {
   const response = await fetch('https://orits-translator.up.railway.app/api/translate', {
     method: 'POST',
     headers: {
@@ -216,8 +206,7 @@ const translateText = async (text, targetLanguage, apiKey) => {
     },
     body: JSON.stringify({
       text: text,
-      targetLanguage: targetLanguage,
-      apiKey: apiKey
+      targetLanguage: targetLanguage
     })
   });
 
@@ -232,7 +221,7 @@ const translateText = async (text, targetLanguage, apiKey) => {
 
 // Utilisation
 try {
-  const translation = await translateText("Hello, world!", "fr", "your-api-key");
+  const translation = await translateText("Hello, world!", "fr");
   console.log(translation); // "Bonjour le monde !"
 } catch (error) {
   console.error("Erreur de traduction:", error.message);
@@ -245,13 +234,12 @@ try {
 import requests
 import json
 
-def translate_text(text, target_language, api_key):
+def translate_text(text, target_language):
     url = "https://orits-translator.up.railway.app/api/translate"
     
     payload = {
         "text": text,
-        "targetLanguage": target_language,
-        "apiKey": api_key
+        "targetLanguage": target_language
     }
     
     response = requests.post(url, json=payload)
@@ -264,7 +252,7 @@ def translate_text(text, target_language, api_key):
 
 # Utilisation
 try:
-    translation = translate_text("Hello, world!", "fr", "your-api-key")
+    translation = translate_text("Hello, world!", "fr")
     print(translation)  # "Bonjour le monde !"
 except Exception as e:
     print(f"Erreur de traduction: {e}")
@@ -274,13 +262,12 @@ except Exception as e:
 
 ```php
 <?php
-function translateText($text, $targetLanguage, $apiKey) {
-    $url = "https://your-app.up.railway.app/api/translate";
+function translateText($text, $targetLanguage) {
+    $url = "https://orits-translator.up.railway.app/api/translate";
     
     $data = [
         "text" => $text,
-        "targetLanguage" => $targetLanguage,
-        "apiKey" => $apiKey
+        "targetLanguage" => $targetLanguage
     ];
     
     $options = [
@@ -304,7 +291,7 @@ function translateText($text, $targetLanguage, $apiKey) {
 
 // Utilisation
 try {
-    $translation = translateText("Hello, world!", "fr", "your-api-key");
+    $translation = translateText("Hello, world!", "fr");
     echo $translation; // "Bonjour le monde !"
 } catch (Exception $e) {
     echo "Erreur de traduction: " . $e->getMessage();
@@ -316,31 +303,27 @@ try {
 
 ```bash
 # Traduction simple
-curl -X POST https://your-app.up.railway.app/api/translate \
+curl -X POST https://orits-translator.up.railway.app/api/translate \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Hello, world!",
-    "targetLanguage": "fr",
-    "apiKey": "your-api-key"
+    "targetLanguage": "fr"
   }'
 
-# Traduction avec langue source spécifiée
-curl -X POST https://your-app.up.railway.app/api/translate \
+# Traduction vers l'anglais
+curl -X POST https://orits-translator.up.railway.app/api/translate \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Bonjour le monde !",
-    "sourceLanguage": "fr",
-    "targetLanguage": "en",
-    "apiKey": "your-api-key"
+    "targetLanguage": "en"
   }'
 
-# Auto-détection de la langue
-curl -X POST https://your-app.up.railway.app/api/translate \
+# Traduction vers l'espagnol
+curl -X POST https://orits-translator.up.railway.app/api/translate \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Hola mundo!",
-    "targetLanguage": "en",
-    "apiKey": "your-api-key"
+    "targetLanguage": "fr"
   }'
 ```
 
@@ -351,19 +334,18 @@ curl -X POST https://your-app.up.railway.app/api/translate \
 | Code | Description | Solution |
 |------|-------------|----------|
 | `400` | Requête invalide | Vérifier les paramètres |
-| `401` | Clé API invalide | Vérifier votre clé API |
 | `429` | Rate limit dépassé | Attendre ou augmenter la limite |
 | `500` | Erreur serveur | Réessayer plus tard |
 
 ### Gestion des Erreurs
 
 ```javascript
-const handleTranslation = async (text, targetLanguage, apiKey) => {
+const handleTranslation = async (text, targetLanguage) => {
   try {
-    const response = await fetch('/api/translate', {
+    const response = await fetch('https://orits-translator.up.railway.app/api/translate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, targetLanguage, apiKey })
+      body: JSON.stringify({ text, targetLanguage })
     });
 
     const data = await response.json();
@@ -373,8 +355,6 @@ const handleTranslation = async (text, targetLanguage, apiKey) => {
         return data.translatedText;
       case 400:
         throw new Error('Paramètres invalides');
-      case 401:
-        throw new Error('Clé API invalide');
       case 429:
         throw new Error('Limite de taux dépassée');
       case 500:
@@ -401,7 +381,7 @@ Le système utilise un cache intelligent qui :
 
 ### 2. Rate Limiting
 
-- **Limite** : 60 requêtes par minute par clé API
+- **Limite** : 60 requêtes par minute par IP
 - **Burst** : 10 requêtes simultanées
 - **Pénalité** : Blocage temporaire si dépassement
 
@@ -425,10 +405,10 @@ const splitText = (text, maxLength = 1000) => {
   return text.match(new RegExp(`.{1,${maxLength}}`, 'g')) || [text];
 };
 
-const translateLongText = async (text, targetLanguage, apiKey) => {
+const translateLongText = async (text, targetLanguage) => {
   const chunks = splitText(text);
   const translations = await Promise.all(
-    chunks.map(chunk => translateText(chunk, targetLanguage, apiKey))
+    chunks.map(chunk => translateText(chunk, targetLanguage))
   );
   return translations.join(' ');
 };
@@ -449,9 +429,10 @@ const translateLongText = async (text, targetLanguage, apiKey) => {
 
 Accédez à vos statistiques via :
 ```http
-GET /api/stats
-X-API-Key: your-api-key
+GET https://orits-translator.up.railway.app/api/stats
 ```
+
+**Note :** L'endpoint stats nécessite une clé API pour l'accès aux données détaillées.
 
 ## 🔧 Configuration Avancée
 
@@ -474,8 +455,8 @@ Pour modifier les limites, contactez l'administrateur ou modifiez les variables 
 1. **"Rate limit exceeded"**
    - Solution : Attendre 1 minute ou optimiser vos requêtes
 
-2. **"Invalid API key"**
-   - Solution : Vérifier votre clé API dans les paramètres
+2. **"Invalid request"**
+   - Solution : Vérifier que les paramètres text et targetLanguage sont fournis
 
 3. **"Translation failed"**
    - Solution : Vérifier votre connexion internet et réessayer
