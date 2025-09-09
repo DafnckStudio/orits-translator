@@ -68,12 +68,30 @@ export async function translateText({
 
     const systemPrompt = `You are a professional translator. Translate the following text from ${sourceLangName} to ${targetLangName}. 
     
+    Language codes and their full names:
+    - en = English
+    - zh = Chinese (Simplified)
+    - hi = Hindi
+    - es = Spanish
+    - fr = French
+    - ar = Arabic
+    - bn = Bengali
+    - ru = Russian
+    - pt = Portuguese
+    - id = Indonesian
+    - ja = Japanese
+    - de = German
+    - ko = Korean
+    - it = Italian
+    - tr = Turkish
+    
     Rules:
     - Maintain the original tone and style
     - Preserve any formatting (markdown, HTML, etc.)
     - If the text contains code or technical terms, keep them in their original language
-    - Return only the translated text, no explanations
-    - If the text is already in the target language, return it unchanged`;
+    - Return only the translated text, no explanations, no language codes
+    - If the text is already in the target language, return it unchanged
+    - Do not include language codes like [HI], [FR], etc. in your response`;
 
     const completion = await openai.chat.completions.create({
       model,
