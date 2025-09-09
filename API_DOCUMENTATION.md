@@ -72,20 +72,25 @@ Content-Type: application/json
 | `text` | string | ✅ | Texte à traduire (max 10,000 caractères) |
 | `targetLanguage` | string | ✅ | Langue cible |
 
-#### Langues Supportées
+#### Langues Supportées (15 langues les plus utilisées au monde)
 
-| Code | Langue | Drapeau |
-|------|--------|---------|
-| `en` | Anglais | 🇺🇸 |
-| `fr` | Français | 🇫🇷 |
-| `es` | Espagnol | 🇪🇸 |
-| `de` | Allemand | 🇩🇪 |
-| `it` | Italien | 🇮🇹 |
-| `pt` | Portugais | 🇵🇹 |
-| `ja` | Japonais | 🇯🇵 |
-| `ko` | Coréen | 🇰🇷 |
-| `zh` | Chinois | 🇨🇳 |
-| `ar` | Arabe | 🇸🇦 |
+| Code | Langue | Nom natif | Drapeau | Rang Mondial |
+|------|--------|-----------|---------|--------------|
+| `en` | Anglais | English | 🇺🇸 | 1er |
+| `zh` | Chinois | 中文 | 🇨🇳 | 2ème |
+| `hi` | Hindi | हिन्दी | 🇮🇳 | 3ème |
+| `es` | Espagnol | Español | 🇪🇸 | 4ème |
+| `fr` | Français | Français | 🇫🇷 | 5ème |
+| `ar` | Arabe | العربية | 🇸🇦 | 6ème |
+| `bn` | Bengali | বাংলা | 🇧🇩 | 7ème |
+| `ru` | Russe | Русский | 🇷🇺 | 8ème |
+| `pt` | Portugais | Português | 🇵🇹 | 9ème |
+| `id` | Indonésien | Bahasa Indonesia | 🇮🇩 | 10ème |
+| `ja` | Japonais | 日本語 | 🇯🇵 | 11ème |
+| `de` | Allemand | Deutsch | 🇩🇪 | 12ème |
+| `ko` | Coréen | 한국어 | 🇰🇷 | 13ème |
+| `it` | Italien | Italiano | 🇮🇹 | 14ème |
+| `tr` | Turc | Türkçe | 🇹🇷 | 15ème |
 
 #### Réponse Succès
 

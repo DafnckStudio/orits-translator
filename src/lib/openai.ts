@@ -36,15 +36,20 @@ const MODEL_COSTS = {
 
 const LANGUAGE_NAMES: Record<string, string> = {
   en: 'English',
-  fr: 'French',
+  zh: 'Chinese (Simplified)',
+  hi: 'Hindi',
   es: 'Spanish',
-  de: 'German',
-  it: 'Italian',
-  pt: 'Portuguese',
-  ja: 'Japanese',
-  ko: 'Korean',
-  zh: 'Chinese',
+  fr: 'French',
   ar: 'Arabic',
+  bn: 'Bengali',
+  ru: 'Russian',
+  pt: 'Portuguese',
+  id: 'Indonesian',
+  ja: 'Japanese',
+  de: 'German',
+  ko: 'Korean',
+  it: 'Italian',
+  tr: 'Turkish',
 };
 
 export async function translateText({

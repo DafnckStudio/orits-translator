@@ -1,32 +1,42 @@
-export const locales = ['en', 'fr', 'es', 'de', 'it', 'pt', 'ja', 'ko', 'zh', 'ar'] as const;
+export const locales = ['en', 'zh', 'hi', 'es', 'fr', 'ar', 'bn', 'ru', 'pt', 'id', 'ja', 'de', 'ko', 'it', 'tr'] as const;
 export const defaultLocale = 'en' as const;
 
 export type Locale = typeof locales[number];
 
 export const localeNames: Record<Locale, string> = {
   en: 'English',
-  fr: 'Français',
-  es: 'Español',
-  de: 'Deutsch',
-  it: 'Italiano',
-  pt: 'Português',
-  ja: '日本語',
-  ko: '한국어',
   zh: '中文',
-  ar: 'العربية'
+  hi: 'हिन्दी',
+  es: 'Español',
+  fr: 'Français',
+  ar: 'العربية',
+  bn: 'বাংলা',
+  ru: 'Русский',
+  pt: 'Português',
+  id: 'Bahasa Indonesia',
+  ja: '日本語',
+  de: 'Deutsch',
+  ko: '한국어',
+  it: 'Italiano',
+  tr: 'Türkçe'
 };
 
 export const localeFlags: Record<Locale, string> = {
   en: '🇺🇸',
-  fr: '🇫🇷',
-  es: '🇪🇸',
-  de: '🇩🇪',
-  it: '🇮🇹',
-  pt: '🇵🇹',
-  ja: '🇯🇵',
-  ko: '🇰🇷',
   zh: '🇨🇳',
-  ar: '🇸🇦'
+  hi: '🇮🇳',
+  es: '🇪🇸',
+  fr: '🇫🇷',
+  ar: '🇸🇦',
+  bn: '🇧🇩',
+  ru: '🇷🇺',
+  pt: '🇵🇹',
+  id: '🇮🇩',
+  ja: '🇯🇵',
+  de: '🇩🇪',
+  ko: '🇰🇷',
+  it: '🇮🇹',
+  tr: '🇹🇷'
 };
 
 export const rtlLocales: Locale[] = ['ar'];

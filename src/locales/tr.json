@@ -1,0 +1,41 @@
+{
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "close": "Kapat"
+  },
+  "translation": {
+    "title": "Çeviri Hizmeti",
+    "description": "AI destekli yüksek kaliteli çeviri hizmeti",
+    "inputPlaceholder": "Çevrilecek metni girin...",
+    "translateButton": "Çevir",
+    "selectLanguage": "Dil Seçin",
+    "sourceLanguage": "Kaynak Dil",
+    "targetLanguage": "Hedef Dil",
+    "autoDetect": "Otomatik Algılama",
+    "copyResult": "Sonucu Kopyala",
+    "clearText": "Metni Temizle"
+  },
+  "languages": {
+    "en": "İngilizce",
+    "zh": "Çince",
+    "hi": "Hintçe",
+    "es": "İspanyolca",
+    "fr": "Fransızca",
+    "ar": "Arapça",
+    "bn": "Bengalce",
+    "ru": "Rusça",
+    "pt": "Portekizce",
+    "id": "Endonezyaca",
+    "ja": "Japonca",
+    "de": "Almanca",
+    "ko": "Korece",
+    "it": "İtalyanca",
+    "tr": "Türkçe"
+  }
+}

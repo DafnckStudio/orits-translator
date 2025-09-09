@@ -1,0 +1,41 @@
+{
+  "common": {
+    "loading": "Memuat...",
+    "error": "Kesalahan",
+    "success": "Berhasil",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "delete": "Hapus",
+    "edit": "Edit",
+    "close": "Tutup"
+  },
+  "translation": {
+    "title": "Layanan Terjemahan",
+    "description": "Layanan terjemahan berkualitas tinggi yang didukung oleh AI",
+    "inputPlaceholder": "Masukkan teks untuk diterjemahkan...",
+    "translateButton": "Terjemahkan",
+    "selectLanguage": "Pilih Bahasa",
+    "sourceLanguage": "Bahasa Sumber",
+    "targetLanguage": "Bahasa Target",
+    "autoDetect": "Deteksi Otomatis",
+    "copyResult": "Salin Hasil",
+    "clearText": "Hapus Teks"
+  },
+  "languages": {
+    "en": "Inggris",
+    "zh": "Cina",
+    "hi": "Hindi",
+    "es": "Spanyol",
+    "fr": "Prancis",
+    "ar": "Arab",
+    "bn": "Bengali",
+    "ru": "Rusia",
+    "pt": "Portugis",
+    "id": "Bahasa Indonesia",
+    "ja": "Jepang",
+    "de": "Jerman",
+    "ko": "Korea",
+    "it": "Italia",
+    "tr": "Turki"
+  }
+}
