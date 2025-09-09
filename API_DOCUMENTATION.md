@@ -156,42 +156,453 @@ X-API-Key: your-api-key-here
 
 ## 🛡️ Protection contre la Traduction Automatique
 
-### ⚠️ **IMPORTANT : Protégez les Données Personnelles**
+### ⚠️ **CRITIQUE : Protégez les Données Sensibles**
 
-Avant d'utiliser l'API de traduction, assurez-vous de protéger les données personnelles et les éléments sensibles :
+**IMPORTANT** : Avant d'intégrer l'API de traduction, vous DEVEZ protéger les données personnelles et les éléments sensibles pour éviter qu'ils soient traduits automatiquement.
 
-```javascript
-// ✅ CORRECT - Données protégées
-const protectedData = {
-  userEmail: "john.doe@example.com", // PROTÉGÉ avec translate="no"
-  userName: "John Doe", // PROTÉGÉ avec translate="no"
-  userPhone: "+1234567890", // PROTÉGÉ avec translate="no"
-  userId: "user_123456", // PROTÉGÉ avec translate="no"
-  apiKey: "sk-proj-1234567890abcdef" // PROTÉGÉ avec translate="no"
-};
+### 🔧 **Méthodes de Protection**
 
-// ❌ INCORRECT - Données non protégées
-const unprotectedData = {
-  userEmail: "john.doe@example.com", // NON PROTÉGÉ - RISQUE !
-  userName: "John Doe", // NON PROTÉGÉ - RISQUE !
-  userPhone: "+1234567890", // NON PROTÉGÉ - RISQUE !
-  userId: "user_123456", // NON PROTÉGÉ - RISQUE !
-  apiKey: "sk-proj-1234567890abcdef" // NON PROTÉGÉ - RISQUE !
-};
+#### **1. Protection par Attribut HTML**
+
+```html
+<!-- ✅ CORRECT - Ces éléments ne seront PAS traduits -->
+<div translate="no">john.doe@example.com</div>
+<span translate="no">John Doe</span>
+<p translate="no">+1234567890</p>
+<button translate="no">Login</button>
+<input translate="no" type="email" value="user@example.com">
+
+<!-- ❌ INCORRECT - Ces éléments SERONT traduits -->
+<div>john.doe@example.com</div>
+<span>John Doe</span>
+<p>+1234567890</p>
+<button>Login</button>
+```
+
+#### **2. Protection par Classes CSS**
+
+```html
+<!-- ✅ CORRECT - Classes CSS pour protection -->
+<div class="notranslate">john.doe@example.com</div>
+<span class="user-data">John Doe</span>
+<p class="form-no-translate">+1234567890</p>
+<button class="action-no-translate">Login</button>
+<div class="brand-no-translate">øRits AI</div>
+```
+
+#### **3. Protection en React/JavaScript**
+
+```jsx
+// ✅ CORRECT - Composants protégés
+function UserProfile({ user }) {
+  return (
+    <div className="user-profile">
+      {/* ✅ PROTÉGÉ - Données personnelles */}
+      <div translate="no" className="user-data">
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+        <p>{user.phone}</p>
+      </div>
+      
+      {/* ✅ PROTÉGÉ - Boutons d'action */}
+      <button translate="no" className="action-no-translate">
+        Edit Profile
+      </button>
+      
+      {/* ✅ PROTÉGÉ - Codes techniques */}
+      <div translate="no" className="notranslate">
+        <p>User ID: {user.id}</p>
+        <p>API Key: {user.apiKey}</p>
+      </div>
+      
+      {/* ✅ TRADUIT - Contenu descriptif */}
+      <div>
+        <p>Welcome to your profile page</p>
+        <p>Here you can manage your account settings</p>
+      </div>
+    </div>
+  );
+}
 ```
 
 ### 🚨 **Éléments à NE JAMAIS Traduire**
 
-1. **Données personnelles** : Emails, noms, téléphones, adresses
-2. **Codes techniques** : IDs, tokens, hashes, URLs
-3. **Noms de marque** : Entreprises, produits spécifiques
-4. **Éléments d'interface** : Boutons, navigation, métadonnées
+#### **Données Personnelles :**
+- ✅ **Emails** : `john.doe@example.com`
+- ✅ **Noms** : `John Doe`, `Marie Dupont`
+- ✅ **Téléphones** : `+1234567890`
+- ✅ **Adresses** : `123 Rue de la Paix`
+
+#### **Codes Techniques :**
+- ✅ **IDs utilisateur** : `user_123456`
+- ✅ **Tokens API** : `sk-proj-1234567890`
+- ✅ **URLs** : `https://example.com`
+- ✅ **Codes de référence** : `REF-2024-001`
+
+#### **Éléments d'Interface :**
+- ✅ **Boutons d'action** : `Login`, `Submit`, `Cancel`
+- ✅ **Navigation** : `Home`, `Profile`, `Settings`
+- ✅ **Métadonnées** : `Created`, `Updated`, `Status`
+
+#### **Noms de Marque :**
+- ✅ **Entreprises** : `øRits AI`, `Google`, `Microsoft`
+- ✅ **Produits** : `iPhone`, `Windows`, `Chrome`
 
 ### ✅ **Éléments à Traduire**
 
-1. **Contenu dynamique** : Articles, descriptions, messages
-2. **Labels d'interface** : Titres, descriptions, instructions
-3. **Messages utilisateur** : Notifications, erreurs, confirmations
+#### **Contenu Dynamique :**
+- ✅ **Articles** : Contenu des blogs, actualités
+- ✅ **Descriptions** : Descriptions de produits, services
+- ✅ **Messages** : Messages d'erreur, notifications
+
+#### **Labels d'Interface :**
+- ✅ **Titres** : Titres de pages, sections
+- ✅ **Instructions** : Textes d'aide, guides
+- ✅ **Confirmations** : Messages de succès
+
+### 🎨 **CSS de Protection**
+
+```css
+/* Classes de protection contre la traduction */
+.notranslate {
+  translate: no !important;
+}
+
+.user-data {
+  translate: no !important;
+}
+
+.form-no-translate {
+  translate: no !important;
+}
+
+.action-no-translate {
+  translate: no !important;
+}
+
+.brand-no-translate {
+  translate: no !important;
+}
+
+/* Protection automatique pour certains éléments */
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+.api-key,
+.user-id,
+.token {
+  translate: no !important;
+}
+```
+
+### 🔍 **Script de Vérification**
+
+```javascript
+// Script pour vérifier la protection
+function checkTranslationProtection() {
+  const sensitiveSelectors = [
+    'input[type="email"]',
+    'input[type="tel"]', 
+    '.user-data',
+    '.api-key',
+    '.user-id',
+    'button',
+    '.brand-name'
+  ];
+  
+  let unprotectedCount = 0;
+  
+  sensitiveSelectors.forEach(selector => {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach(element => {
+      const isProtected = element.hasAttribute('translate') && 
+                         element.getAttribute('translate') === 'no';
+      
+      if (!isProtected) {
+        console.warn('⚠️ Élément non protégé détecté:', element);
+        unprotectedCount++;
+      }
+    });
+  });
+  
+  if (unprotectedCount === 0) {
+    console.log('✅ Tous les éléments sensibles sont protégés');
+  } else {
+    console.error(`❌ ${unprotectedCount} éléments sensibles non protégés`);
+  }
+}
+
+// Exécuter la vérification
+checkTranslationProtection();
+```
+
+### 📋 **Checklist de Protection**
+
+**Avant de déployer votre site avec l'API de traduction :**
+
+- [ ] **Emails** : Tous les emails ont `translate="no"`
+- [ ] **Noms** : Tous les noms ont `translate="no"`
+- [ ] **Téléphones** : Tous les téléphones ont `translate="no"`
+- [ ] **IDs** : Tous les IDs ont `translate="no"`
+- [ ] **Boutons** : Tous les boutons ont `translate="no"`
+- [ ] **Navigation** : Tous les éléments de navigation ont `translate="no"`
+- [ ] **Classes CSS** : Classes de protection ajoutées
+- [ ] **Script de vérification** : Script de contrôle implémenté
+- [ ] **Test de protection** : Vérification manuelle effectuée
+
+### 🚀 **Exemple Complet d'Implémentation**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Site Multilingue</title>
+    <style>
+        .notranslate { translate: no !important; }
+        .user-data { translate: no !important; }
+        .action-no-translate { translate: no !important; }
+    </style>
+</head>
+<body>
+    <!-- ✅ PROTÉGÉ - Données utilisateur -->
+    <div class="user-profile">
+        <h1 translate="no" class="user-data">John Doe</h1>
+        <p translate="no" class="user-data">john.doe@example.com</p>
+        <p translate="no" class="user-data">+1234567890</p>
+        <p translate="no" class="notranslate">User ID: user_123456</p>
+    </div>
+    
+    <!-- ✅ PROTÉGÉ - Boutons d'action -->
+    <div class="actions">
+        <button translate="no" class="action-no-translate">Login</button>
+        <button translate="no" class="action-no-translate">Register</button>
+        <button translate="no" class="action-no-translate">Settings</button>
+    </div>
+    
+    <!-- ✅ TRADUIT - Contenu descriptif -->
+    <div class="content">
+        <h2>Welcome to our platform</h2>
+        <p>This is a description that can be translated</p>
+        <p>Here you can manage your account and preferences</p>
+    </div>
+    
+    <script>
+        // Script de vérification
+        function checkProtection() {
+            const sensitive = document.querySelectorAll('.user-data, .action-no-translate');
+            let unprotected = 0;
+            
+            sensitive.forEach(el => {
+                if (!el.hasAttribute('translate') || el.getAttribute('translate') !== 'no') {
+                    unprotected++;
+                }
+            });
+            
+            console.log(unprotected === 0 ? '✅ Protection OK' : `❌ ${unprotected} éléments non protégés`);
+        }
+        
+        checkProtection();
+    </script>
+</body>
+</html>
+```
+
+### ⚠️ **Avertissements Importants**
+
+1. **Sécurité** : Ne jamais traduire les mots de passe, tokens API, ou données sensibles
+2. **Expérience utilisateur** : Les noms propres et marques doivent rester dans leur langue originale
+3. **Fonctionnalité** : Les boutons d'action doivent garder leur fonction même traduits
+4. **Performance** : Protéger les éléments réduit les appels API inutiles
+
+## 🚀 Intégration avec Frameworks
+
+### React/Next.js
+
+```jsx
+import React, { useState } from 'react';
+
+function TranslationComponent() {
+  const [text, setText] = useState('');
+  const [translatedText, setTranslatedText] = useState('');
+  const [targetLanguage, setTargetLanguage] = useState('fr');
+
+  const translateText = async () => {
+    try {
+      const response = await fetch('https://orits-translator.up.railway.app/api/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, targetLanguage })
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        setTranslatedText(data.translatedText);
+      }
+    } catch (error) {
+      console.error('Erreur de traduction:', error);
+    }
+  };
+
+  return (
+    <div>
+      {/* ✅ PROTÉGÉ - Données utilisateur */}
+      <div translate="no" className="user-data">
+        <p>User: john.doe@example.com</p>
+        <p>ID: user_123456</p>
+      </div>
+      
+      {/* ✅ TRADUIT - Interface de traduction */}
+      <div>
+        <textarea 
+          value={text} 
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Enter text to translate"
+        />
+        <select value={targetLanguage} onChange={(e) => setTargetLanguage(e.target.value)}>
+          <option value="fr">Français</option>
+          <option value="es">Espagnol</option>
+          <option value="de">Allemand</option>
+        </select>
+        <button onClick={translateText}>Translate</button>
+        {translatedText && <p>Translated: {translatedText}</p>}
+      </div>
+    </div>
+  );
+}
+```
+
+### Vue.js
+
+```vue
+<template>
+  <div>
+    <!-- ✅ PROTÉGÉ - Données utilisateur -->
+    <div translate="no" class="user-data">
+      <p>User: {{ user.email }}</p>
+      <p>ID: {{ user.id }}</p>
+    </div>
+    
+    <!-- ✅ TRADUIT - Interface de traduction -->
+    <div>
+      <textarea v-model="text" placeholder="Enter text to translate"></textarea>
+      <select v-model="targetLanguage">
+        <option value="fr">Français</option>
+        <option value="es">Espagnol</option>
+        <option value="de">Allemand</option>
+      </select>
+      <button @click="translateText">Translate</button>
+      <p v-if="translatedText">Translated: {{ translatedText }}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      text: '',
+      translatedText: '',
+      targetLanguage: 'fr',
+      user: {
+        email: 'john.doe@example.com',
+        id: 'user_123456'
+      }
+    };
+  },
+  methods: {
+    async translateText() {
+      try {
+        const response = await fetch('https://orits-translator.up.railway.app/api/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            text: this.text, 
+            targetLanguage: this.targetLanguage 
+          })
+        });
+        
+        const data = await response.json();
+        if (data.success) {
+          this.translatedText = data.translatedText;
+        }
+      } catch (error) {
+        console.error('Erreur de traduction:', error);
+      }
+    }
+  }
+};
+</script>
+
+<style>
+.user-data {
+  translate: no !important;
+}
+</style>
+```
+
+### Angular
+
+```typescript
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-translation',
+  template: `
+    <div>
+      <!-- ✅ PROTÉGÉ - Données utilisateur -->
+      <div translate="no" class="user-data">
+        <p>User: {{ user.email }}</p>
+        <p>ID: {{ user.id }}</p>
+      </div>
+      
+      <!-- ✅ TRADUIT - Interface de traduction -->
+      <div>
+        <textarea [(ngModel)]="text" placeholder="Enter text to translate"></textarea>
+        <select [(ngModel)]="targetLanguage">
+          <option value="fr">Français</option>
+          <option value="es">Espagnol</option>
+          <option value="de">Allemand</option>
+        </select>
+        <button (click)="translateText()">Translate</button>
+        <p *ngIf="translatedText">Translated: {{ translatedText }}</p>
+      </div>
+    </div>
+  `,
+  styles: [`
+    .user-data {
+      translate: no !important;
+    }
+  `]
+})
+export class TranslationComponent {
+  text = '';
+  translatedText = '';
+  targetLanguage = 'fr';
+  user = {
+    email: 'john.doe@example.com',
+    id: 'user_123456'
+  };
+
+  constructor(private http: HttpClient) {}
+
+  async translateText() {
+    try {
+      const response = await this.http.post('https://orits-translator.up.railway.app/api/translate', {
+        text: this.text,
+        targetLanguage: this.targetLanguage
+      }).toPromise();
+      
+      if (response.success) {
+        this.translatedText = response.translatedText;
+      }
+    } catch (error) {
+      console.error('Erreur de traduction:', error);
+    }
+  }
+}
+```
 
 ## 💻 Exemples d'Intégration
 
